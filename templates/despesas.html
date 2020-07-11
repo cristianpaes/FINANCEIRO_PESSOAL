@@ -1,0 +1,67 @@
+{% extends "parciais/base.html" %}
+{% block content %}
+<div class="shadow mb-4  rounded" style="background-color: #F2F2F2;" align="center">
+    <h2><strong>Lista das Despesas</strong></h2>
+</div>
+
+<div class="container mb-4">
+    <a href="/despesas/cad_despesa" class="btn btn-info btn-sm " role="button">Nova Despesa</a>
+    <a href="/despesas/categoria" class="btn btn-info btn-sm " role="button">Categorias das Despesas</a>
+
+    <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">Exibição:</legend>
+          <div class="col-sm-5">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="opcao1" checked>
+              <label class="form-check-label" for="gridRadios1">
+                Simples
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="opcao2">
+              <label class="form-check-label" for="gridRadios2">
+                Detalhado
+              </label>
+            </div>
+          </div>
+        </div>
+  </fieldset>
+</div>
+<!-- verificar com if caso não seja simples -->
+<section class="container-fluid margin">
+            <div class="table-responsive-lg">
+                <table class="table table-xl table-striped">
+                    <thead class="claro" align="center">
+                        <tr>
+                        <th scope="col">CATEGORIA</th>
+                        <th scope="col">VALOR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                           {% for i in ramais %}
+                                <tr>
+                                <th>{{i.ramal}}</th>
+                                <td>{{ i.nome_resp | upper }}</td>
+                                </tr>
+                           {% endfor %}
+                      </tbody>
+                </table>
+                <nav aria-label="Navegação de página exemplo">
+                    <ul class="pagination">
+                      {% for pagina in ramais.paginator.page_range %}
+                        {% if ramais.number == pagina %}
+                            <li class="page-item active"><a class="page-link" href="?page={{ pagina }}">{{ pagina }}</a></li>
+                        {% else %}
+                           <li class="page-item"><a class="page-link" href="?page={{ pagina }}">{{ pagina }}</a></li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+            <div align="right">
+                <button type="button" onclick="window.print()" class="btn btn-outline-secondary">Imprimir</button>
+            </div>
+</section>
+
+{% endblock %}

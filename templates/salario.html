@@ -1,0 +1,34 @@
+{% extends "parciais/base.html" %}
+{% block content %}
+<div class="shadow mb-4  rounded" style="background-color: #F2F2F2" align="center">
+    <h2><strong>Lista de Salários</strong></h2>
+</div>
+<div class="container " align="center">
+    <div class="col-6">
+          <div class="jumbotron jumbotron-fluid shadow p-6 mb-4 rounded" style="background-color:#F2F2F2;">
+              <div class="container table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                    <tr>
+                                      <th scope="row">Salário Anterior:</th>
+                                      <td class="border border-primary">{{ sl_anterior }}</td>
+                                      <th scope="row">Mês:</th>
+                                      <td class="border border-primary">{{ mes_anterior }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Salário Atual:</th>
+                                      <td class="border border-primary">{{ sl_atual }}</td>
+                                      <th scope="row">Mês:</th>
+                                      <td class="border border-primary">{{ mes_atual }}</td>
+                                    </tr>
+                            </tbody>
+                        </table>
+              </div>
+              <a href="/salario/cad_salario" class="btn btn-info btn-sm " role="button">CADASTRAR</a>
+         </div>
+    </div>
+</div>
+{% endblock %}
